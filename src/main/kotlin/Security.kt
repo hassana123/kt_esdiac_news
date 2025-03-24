@@ -1,8 +1,12 @@
-package com.example
+package com.example.security
 
-import com.example.security.FirebaseConfig
 import io.ktor.server.application.*
+import io.ktor.server.sessions.*
 
 fun Application.configureSecurity() {
-    FirebaseConfig.initialize()
+    install(Sessions) {
+        cookie<UserSession>("USER_SESSION") {
+            cookie.extensions["SameSite"] = "lax"
+        }
+    }
 }

@@ -1,5 +1,8 @@
 package com.example
 
+import com.example.database.DatabaseFactory
+import com.example.security.configureSecurity
+import com.example.routes.configureAuthRouting
 import io.ktor.server.application.*
 
 fun main(args: Array<String>) {
@@ -7,8 +10,10 @@ fun main(args: Array<String>) {
 }
 
 fun Application.module() {
-    configureTemplating()  // ✅ Ensure templates are configured
-    configureSerialization()  // ✅ Install JSON serialization
+    DatabaseFactory.init()
     configureSecurity()
-    configureRouting()  // ✅ Routing should come last
+    configureTemplating()
+    configureSerialization()
+    configureAuthRouting()
+    configureRouting()
 }

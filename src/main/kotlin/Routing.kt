@@ -1,5 +1,5 @@
 package com.example
-
+import com.example.routes.configureAuthRouting
 import com.example.templates.baseTemplate
 import com.example.templates.dashboardPage
 import com.example.templates.loginPage
@@ -32,9 +32,7 @@ fun Application.configureRouting() {
         // ✅ Login page
         get("/login") {
             call.respondHtml {
-                baseTemplate("Login Page") {
-                    loginPage()
-                }
+                loginPage()
             }
         }
 
